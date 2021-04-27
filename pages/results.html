@@ -221,7 +221,8 @@ title: Results
 <img src="../static/img/lda_wordcloud.png" alt="LDA word cloud" width="100%">
 
 <p>
-    As expected, the majority of Twitter users use the hashtag #CovidVaccine to talk about the latest progress in vaccine development or their experience in getting the shots. As we see in Topic #19, they include the majority of words (meaning most of the content using these words are talking about vaccine development progress. Some keywords include "take", "get", "first", "dose", "covidvaccin", "pfizer", etc.
+    As expected, the dominant topic with the majority token counts (Topic #19) is about people's experience in getting the vacine. 
+    The key words includes "got","first", "covidvaccine", "dose","today".
 </p>
 
 <p>
@@ -230,22 +231,32 @@ title: Results
 
 <h3 id="logistics">Hierarchical Dirichlet Process (HDP) using Tomotopy<br>
 </h3>
-Tweet topics are intrinsically hierarchical, so we further apply Hierarchical Dirichlet Process (HDP).
 
 
 <p>
-    To fine-tune our model, we again applied grid search on the number of topics, alpha (hyper-parameter for the document-topic Dirichlet distribution), and beta (hyper-parameter for the topics-word Dirichlet distribution). The number of topics ranges from 2 to 20, with a step size of 2. And both alpha and beta range from 0.01 to 0.91, with a step size of 0.1. To evaluate the results, we use Coherence Score, as shown below:
+    Tweet topics are intrinsically hierarchical, so we further apply Hierarchical Dirichlet Process (HDP).
+    To fine-tune our model, we again applied grid search on the number of topics, alpha (hyper-parameter for the document-topic Dirichlet distribution), and beta (hyper-parameter for the topics-word Dirichlet distribution). The number of topics ranges from 2 to 110, with a step size of 2. And both alpha and beta range from 0.01 to 0.91, with a step size of 0.1. To evaluate the results, we use Coherence Score, as shown below:
 </p>
 <center>
     <img src="../static/img/sorted_hdp_coherence.png" alt="HDP Coherence Result" width="50%">
 </center>
 
 <p>
-    The topic words are:
+    The top 20 topic words are:
 </p>
 <center>
     <img src="../static/img/hdp_topic_words.png" alt="HDP topic words" width="100%">
 </center>
+<p>
+    We visualize the the relative importance of the topic words using word cloud: 
+</p>
 <center>
     <img src="../static/img/hdp_wordcloud.png" alt="HDP word cloud" width="100%">
 </center>
+
+<p>
+    As we can see, unlike LDA, the token counts are more evenly distributed for different topics. This is because the hiearchical model 
+    is able to identify sub-topics in the major topic "covidvaccine". This is more evidential in the word cloud. Most topics have the key word
+    "covidvaccine" and they are diffrent sub-topics of "covidvaccine". For example, Topic #1 is about people getting the first dose; Topic #3 is about
+    the approvement of pfizer's vaccine trial. Topic #4 express gratitude for the vaccin staff. Topic #5 discusses the "covidshield" vaccine developed in India.
+</p>
