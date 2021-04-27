@@ -62,7 +62,7 @@ title: Results
 <h2 id="logistics">Supervised Learning<br>
 </h2>
 
-<h3 id="logistics">Dictionary-based Sentiment Analysis<br>
+<h3 id="logistics">Dictionary-based Sentiment Analysis Using VADER<br>
 </h3>
 
 <p>
@@ -77,12 +77,20 @@ title: Results
 <img src="../static/img/VADER.png" alt="VADER Result" width="60%">
 </center>
 
-<h3 id="logistics">Next Step: SentiWords<br>
+<h3 id="logistics">Dictionary-based Sentiment Analysis Using SentiWordnet<br>
 </h3>
 
 <p>
-    Next step we will use SentiWords to analyze sentiment on the tweets. We will use different sentiment dictionaries to calculate sentiment scores and compare their results for future purpose.
+    We used SentiWordnet to analyze sentiment on the tweets and compared with VADER results for future purpose. 
 </p>
+
+<p>
+    After preprocessing the CVT dataset, we need to add the simple Wordnet tags to each word in the CVT dataset. We calculated sentiment scores of each words in the sentences and used total positive scores minus negative scores to indicate whether a sentence is positive or negative or neutral. If the absolute value of sentiment score of a sentence is less than 0.05, this sentence can be regarded as neutral sentiment. Otherwise, the positive sentiment score indicates positive sentiment and negative sentiment score indicates negative sentiment. The results are shown below (-1 represents negative, 0 represents neutral, 1 represents positive):
+</p>
+
+<center>
+<img src="../static/img/SentiWordnet_result.png" alt="SentiWordnet Result" width="60%">
+</center>
 
 <h3 id="logistics">Neural Network-based Sentiment Analysis<br>
 </h3>
